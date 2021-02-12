@@ -48,11 +48,12 @@ const fetchISSFlyOverTimes = function(coords, callback) {
       return;
     }
     if (response.statusCode !== 200) {
-      const msg = `Status Code ${response.statusCode} when fetching flyover prediction. Response: ${body}`;
+      const msg = `Status Code ${response.statusCode} when fetching ISS flyover times. Response: ${body}`;
       callback(Error(msg), null);
       return;
     }
-    callback(null,body);
+    const passes = JSON.parse(body).response
+    callback(null,passes);
   });
 };
 
